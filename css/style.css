@@ -1,1 +1,124 @@
+:root {
+    --bg-color: #080808;          /* ပုံထဲက အမည်းရောင် Background */
+    --card-bg: #141414;           /* ကဒ်ပြားများအတွက် အမည်းဖျော့ */
+    --text-color: #ffffff;        /* စာသားအဖြူရောင် */
+    --primary-color: #e91e63;     /* အဝိုင်းပုံရဲ့ ပန်းရောင် (Primary) */
+    --secondary-color: #ff80bf;   /* လူပုံရဲ့ ပန်းရောင်ဖျော့ (Secondary Primary) */
+    --border-color: #262626;      /* ဘောင်မျဉ်းအရောင် */
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+body { background-color: var(--bg-color); color: var(--text-color); min-height: 100vh; }
+
+/* Sidebar */
+.sidebar { position: fixed; top: 0; left: -260px; width: 260px; height: 100%; background: var(--card-bg); border-right: 1px solid var(--border-color); transition: 0.3s ease; z-index: 1000; }
+.sidebar.open { left: 0; }
+.brand { display: flex; justify-content: space-between; align-items: center; padding: 20px; font-weight: bold; color: var(--primary-color); border-bottom: 1px solid var(--border-color); }
+.close-btn, .menu-btn { background: none; border: none; color: var(--secondary-color); font-size: 18px; cursor: pointer; }
+.menu-list { list-style: none; padding: 10px 0; }
+.menu-list li a { display: flex; align-items: center; gap: 15px; padding: 12px 20px; color: #a4b0be; text-decoration: none; font-size: 14px; }
+.menu-list li.active a, .menu-list li a:hover { background: rgba(233, 30, 99, 0.15); color: var(--primary-color); border-left: 4px solid var(--primary-color); }
+
+/* Header */
+.header { display: flex; align-items: center; gap: 15px; padding: 15px 20px; background: var(--card-bg); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 900; }
+.header h1 { font-size: 16px; color: var(--secondary-color); }
+
+/* Video Grid */
+.video-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 15px; max-width: 800px; margin: 0 auto; }
+@media(min-width: 768px) { .video-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.video-card { background: var(--card-bg); border-radius: 8px; overflow: hidden; border: 1px solid var(--border-color); cursor: pointer; transition: 0.2s; }
+.video-card:hover { border-color: var(--primary-color); }
+
+.thumbnail-box { position: relative; width: 100%; aspect-ratio: 16/9; background: #000; }
+.thumbnail-box video { width: 100%; height: 100%; object-fit: cover; }
+.view-badge { position: absolute; bottom: 6px; right: 6px; background: rgba(0, 0, 0, 0.85); color: var(--secondary-color); font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: bold; }
+.video-info { padding: 10px; }
+.video-info h3 { font-size: 12px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; color: var(--text-color); }
+
+
+/* Model Grid (တစ်တန်းကို 3 ကတ်ပြရန်နှင့် အမြင့်ညီစေရန်) */
+.model-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 12px;
+    align-items: stretch; /* ကတ်ပြားအားလုံး အမြင့်ညီစေရန် */
+}
+
+/* Model Card Design */
+.model-card {
+    background: var(--card-bg, #1a1a1a);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-color, #333);
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* ပုံနှင့်နာမည်ကို နေရာချካတ်ပိုင်းခြားရန် */
+    height: 100%;
+    transition: transform 0.2s ease;
+}
+
+.model-card:active {
+    transform: scale(0.96);
+}
+
+.model-img-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    background: #222;
+    overflow: hidden;
+}
+
+.model-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Model Placeholder Styling */
+.model-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: #2a2a2a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* Video Count Badge */
+.video-count-badge {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #2ecc71;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 5px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+/* Model Name */
+.model-name {
+    padding: 8px 6px;
+    font-size: 11px;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: var(--card-bg, #1a1a1a);
+    width: 100%;
+}
 
